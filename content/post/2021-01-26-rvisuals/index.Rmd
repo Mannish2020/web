@@ -1,0 +1,51 @@
+---
+title: "R Visualiations"
+author: "Manish Gyawali"
+date: 2021-01-26
+categories: ["R"]
+tags: ["R Markdown", "plot", "regression","visualization"]
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(collapse = TRUE)
+```
+
+```{r, echo=FALSE}
+library(plotly)
+```
+
+Let's look at the structure of the dataset:
+
+```{r,echo=FALSE}
+dplyr::glimpse(diamonds)
+```
+
+Let's look at the first 10 elements:
+
+```{r, echo=FALSE}
+head(diamonds,10)
+```
+
+
+```{r plot1, echo=FALSE}
+
+ggplot(diamonds,aes(carat,price)) + 
+  geom_point(aes(colour = color)) + 
+  geom_smooth(colour = "red") + 
+  facet_wrap(~cut)
+
+```
+
+# Including Plots
+
+You can also embed plots. See Figure \@ref(fig:pie) for example:
+
+```{r pie, fig.cap='A fancy pie chart.', tidy=FALSE}
+par(mar = c(0, 1, 0, 1))
+pie(
+  c(280, 60, 20),
+  c('Sky', 'Sunny side of pyramid', 'Shady side of pyramid'),
+  col = c('#0292D8', '#F7EA39', '#C4B632'),
+  init.angle = -50, border = NA
+)
+```
